@@ -12,35 +12,44 @@ def get_filters():
 
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - name of the month to filter by, or "all" to apply no 
+                      month filter
+        (str) day - name of the day of week to filter by, or "all" to apply no 
+                    day filter
     """
 
     print('\n        __o\n      _ \<_\n.....(_)/(_)\n')
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # get user input for city (chicago, new york city, washington).
+    # HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('First of all: Which city do you want to look at? (Chicago, New York City, Washington): ')
+        city = input('First of all: Which city do you want to look at? \
+(Chicago, New York City, Washington): ')
         if city.lower() in CITY_DATA:
             break
         else:
-            print('I\'m sorry but this was not a valid input, please try again!')
+            print('I\'m sorry but this was not a valid input, try again!')
 
     # get user input for month (all, january, february, ... , june)
     while True:
-        month = input('Now: Which month would you like to filter for? (January, February, ... , June OR \'all\' for no filter): ')
-        if month.lower() in ('all', 'january', 'february', 'march', 'april', 'may', 'june'):
+        month = input('Now: Which month would you like to filter for? \
+(January, February, ... , June OR \'all\' for no filter): ')
+        if month.lower() in (
+            'all', 'january', 'february', 'march', 'april', 'may', 'june'):
             break
         else:
-            print('I\'m sorry but this was not a valid input, please try again!')
+            print('I\'m sorry but this was not a valid input, try again!')
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        day = input('Lastly: Which weekday would you like to filter for? (Monday, Tuesday, ... , Sunday OR \'all\' for no filter): ')
-        if day.lower() in ('all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'):
+        day = input('Lastly: Which weekday would you like to filter for? \
+(Monday, Tuesday, ... , Sunday OR \'all\' for no filter): ')
+        if day.lower() in (
+            'all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 
+            'saturday', 'sunday'):
             break
         else:
-            print('I\'m sorry but this was not a valid input, please try again!')
+            print('I\'m sorry but this was not a valid input, try again!')
 
     print('-'*40)
     return city, month, day
@@ -48,12 +57,15 @@ def get_filters():
 
 def load_data(city, month, day):
     """
-    Loads data for the specified city and filters by month and day if applicable.
+    Loads data for the specified city
+    and filters by month and day if applicable.
 
     Args:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - name of the month to filter by, 
+                      or "all" to apply no month filter
+        (str) day - name of the day of week to filter by,
+                    or "all" to apply no day filter
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
@@ -116,7 +128,8 @@ def station_stats(df):
     print('End station: ' + str(df['Start Station'].mode()[0]))
 
     # display most frequent combination of start station and end station trip
-    print('Combination: ' + str((df['Start Station']+' & '+df['End Station']).mode()[0]))
+    print('Combination: ' + str((df['Start Station']+' & '+
+    df['End Station']).mode()[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -132,7 +145,8 @@ def trip_duration_stats(df):
     print('Total: ' + str(df['Trip Duration'].sum()))
 
     # display mean travel time
-    print('Average: ' + str(df['Trip Duration'].sum()/df['Trip Duration'].count()))
+    print('Average: ' + str(df['Trip Duration'].sum()/
+    df['Trip Duration'].count()))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -184,13 +198,15 @@ def raw_print(df):
                 print(df[start:stop])
                 start += 5
                 stop += 5
-                more_raw = input('\nDo you want to see some more lines? Enter yes or no.\n')
+                more_raw = input('\nDo you want to see some more lines? \
+Enter yes or no.\n')
         elif more_raw == 'no':
             pd.reset_option("display.max_columns")
             break
         else:
             print('\nSorry, I didn\'t catch that, come again.')
-            more_raw = input('\nDo you want to see some more lines? Enter yes or no.\n')
+            more_raw = input('\nDo you want to see some more lines? \
+Enter yes or no.\n')
 
 
 
@@ -207,7 +223,8 @@ def main():
         user_stats(df, city)
 
         while True:
-            show_raw = input('\nWould you like to see the first few lines of raw data? Enter yes or no.\n')
+            show_raw = input('\nCheck out the first lines of raw data? \
+Enter yes or no.\n')
             if show_raw == 'yes':
                 raw_print(df)
                 break
