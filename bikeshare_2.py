@@ -182,22 +182,22 @@ def user_stats(df, city):
 def raw_print(df):
     """Displays 5 lines of raw data at a time, at user request."""
 
-    start = 0
-    stop = 5
+    start_line = 0
+    stop_line = 5
     more_raw = 'yes'
 
     # Display raw data if user wants to see it
     pd.set_option("display.max_columns", 11)
     while True:
         if more_raw == 'yes':
-            if stop >= df.shape[0]:
+            if stop_line >= df.shape[0]:
                 print('\nYou have reached the end of the data set.\n')
                 pd.reset_option("display.max_columns")
                 break
             else:
-                print(df[start:stop])
-                start += 5
-                stop += 5
+                print(df[start_line:stop_line])
+                start_line += 5
+                stop_line += 5
                 more_raw = input('\nDo you want to see some more lines? \
 Enter yes or no.\n')
         elif more_raw == 'no':
