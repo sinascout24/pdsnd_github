@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
+# make sure these files are in the same directory for the code to run at all
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
