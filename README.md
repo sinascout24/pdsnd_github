@@ -14,3 +14,4 @@ Get a glimpse into bikeshare data from 3 major US cities (Chicago, New York City
 ### Credits
 Some of the upfront legwork done by Udacity  :yellow_heart:
 
+Also thanks to my boss who signed off on this training :+1:
